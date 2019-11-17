@@ -1,6 +1,6 @@
 import numpy as np
 from scipy.io import loadmat
-import os, cv2
+import os, cv2, random
 
 
 class DataSet:
@@ -20,7 +20,10 @@ class DataSet:
         return img / 127.5 - 1.0
 
     def train_data(self):
-        for i in range(self.train_length):
+        idx = list(range(self.train_length))
+        random.shuffle(idx)
+
+        for i in idx:
             file = self.train_list['file_list'][i][0][0]
             label = self.train_list['labels'][i][0]
 

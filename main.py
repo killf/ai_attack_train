@@ -35,8 +35,8 @@ def train():
     for epoch in range(EPOCHS):
         for iter, data in enumerate(train_reader()):
             cost_value, acc_value = exe.run(train_program, feed=feeder.feed(data), fetch_list=[cost, acc])
-            if iter % 4 ==0:
-                print(f"Epoch {epoch}, Iter {iter}, Cost={cost_value[0]}, Acc={acc_value[0]}")
+            if iter % 4 == 0:
+                print("Epoch %d, Iter %d, Cost=%05f, Acc=%05f" % (epoch, iter, cost_value[0], acc_value[0]))
 
 
 def main():
